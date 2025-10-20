@@ -1,6 +1,6 @@
 class MortgageCalculator:
     """
-    Простой калькулятор ипотеки для консоли
+    Простой калькулятор ипотеки
     """
     
     def calculate_monthly_payment(self, principal, annual_rate, years):
@@ -11,7 +11,7 @@ class MortgageCalculator:
         if monthly_rate == 0:
             return principal / months
         
-        # Формула аннуитетного платежа - исправленная версия
+        # Формула аннуитетного платежа
         numerator = principal * monthly_rate * (1 + monthly_rate) ** months
         denominator = (1 + monthly_rate) ** months - 1
         monthly_payment = numerator / denominator

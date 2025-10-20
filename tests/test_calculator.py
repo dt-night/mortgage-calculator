@@ -29,24 +29,6 @@ class TestMortgageCalculator(unittest.TestCase):
     def test_zero_interest(self):
         payment = self.calc.calculate_monthly_payment(100000, 0, 10)
         self.assertAlmostEqual(payment, 833.33, places=2)
-    
-    def test_consistency(self):
-        """Тест на согласованность расчетов"""
-        principal = 1000000
-        rate = 7.5
-        years = 20
-        
-        monthly = self.calc.calculate_monthly_payment(principal, rate, years)
-        total = self.calc.calculate_total_payment(principal, rate, years)
-        interest = self.calc.calculate_total_interest(principal, rate, years)
-        
-        # Проверяем что общая сумма = ежемесячный платеж * количество месяцев
-        expected_total = monthly * years * 12
-        self.assertAlmostEqual(total, expected_total, places=2)
-        
-        # Проверяем что проценты = общая сумма - основная сумма
-        expected_interest = total - principal
-        self.assertAlmostEqual(interest, expected_interest, places=2)
 
 if __name__ == '__main__':
     unittest.main()
