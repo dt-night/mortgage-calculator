@@ -12,4 +12,4 @@
 ## Запуск приложения
 
 ```bash
-python app.py
+python app.py" " 
