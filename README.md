@@ -1,1 +1,1 @@
-# mortgage-calculator
+# калькулятор ипотеки
