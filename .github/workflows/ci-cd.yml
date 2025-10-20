@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: Запуск тестов
+    name: Run Tests
     runs-on: ubuntu-latest
     
     steps:
@@ -17,16 +17,25 @@ jobs:
     - run: python -m unittest discover tests -v
 
   deploy:
-    name: Деплой на production
+    name: Deploy to Production
     runs-on: self-hosted
     needs: test
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@v4
-    - run: |
+    
+    - name: Deploy application
+      run: |
         mkdir -p ~/mortgage-calculator
         cp app.py calculator.py ~/mortgage-calculator/
-        echo "Приложение развернуто в ~/mortgage-calculator"
-    - run: |
+    
+    - name: Test deployed application
+      run: |
         cd ~/mortgage-calculator
         echo -e "1000000\n7.5\n20" | python3 app.py
+    
+    - name: Final deployment test
+      run: |
+        cd ~/mortgage-calculator
+        echo -e "2000000\n8.5\n15" | python3 app.py
