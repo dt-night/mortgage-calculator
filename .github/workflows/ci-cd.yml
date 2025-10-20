@@ -24,10 +24,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        sudo mkdir -p /opt/mortgage-calculator
-        sudo cp app.py calculator.py /opt/mortgage-calculator/
-        sudo chown -R $USER:$USER /opt/mortgage-calculator
-        echo "Приложение развернуто в /opt/mortgage-calculator"
+        mkdir -p ~/mortgage-calculator
+        cp app.py calculator.py ~/mortgage-calculator/
+        echo "Приложение развернуто в ~/mortgage-calculator"
     - run: |
-        cd /opt/mortgage-calculator
+        cd ~/mortgage-calculator
         echo -e "1000000\n7.5\n20" | python3 app.py
