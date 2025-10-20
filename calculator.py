@@ -11,9 +11,10 @@ class MortgageCalculator:
         if monthly_rate == 0:
             return principal / months
         
-        monthly_payment = (principal * monthly_rate * 
-                         (1 + monthly_rate) ** months) / 
-                         ((1 + monthly_rate) ** months - 1)
+        # Формула аннуитетного платежа - исправленная версия
+        numerator = principal * monthly_rate * (1 + monthly_rate) ** months
+        denominator = (1 + monthly_rate) ** months - 1
+        monthly_payment = numerator / denominator
         
         return round(monthly_payment, 2)
     
