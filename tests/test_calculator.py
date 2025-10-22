@@ -12,7 +12,7 @@ class TestMortgageCalculator(unittest.TestCase):
         self.calc = MortgageCalculator()
     
     def test_monthly_payment(self):
-        payment = self.calc.calculate_monthly_payment(2000000, 7.5, 20)
+        payment = self.calc.calculate_monthly_payment(1000000, 7.5, 20)
         self.assertAlmostEqual(payment, 8055.93, places=2)
     
     def test_total_payment(self):
